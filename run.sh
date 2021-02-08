@@ -15,4 +15,4 @@ blackbox &
 x11vnc -nopw -noncache -forever -q -bg
 
 # Start Chrome
-wine Chrome-bin/chrome.exe
+#wine Chrome-bin/chrome.exe

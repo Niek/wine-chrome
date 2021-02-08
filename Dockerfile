@@ -2,9 +2,10 @@ FROM ubuntu:rolling
 
 # Install deps
 ENV DEBIAN_FRONTEND noninteractive
-ENV WINEARCH win32
-RUN dpkg --add-architecture i386 \
-    && apt update \
+# ENV WINEARCH win64
+ENV WINEARCH win64
+# dpkg --add-architecture i386 \
+RUN apt update \
     # Basic dependencies
     && apt install -y xvfb blackbox x11vnc pulseaudio software-properties-common aria2 \
     # Wine from HQ repo
@@ -12,7 +13,7 @@ RUN dpkg --add-architecture i386 \
     && apt-key add winehq.key \
     && yes | add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' \
     && apt update \
-    && apt install -y --install-recommends winehq-devel winetricks \
+    && apt install -y --install-recommends winehq-devel winetricks winbind wine64 \
     # Update winetricks to latest git version
     && yes Y | winetricks --self-update \
     # Install necessary Windows stuff
@@ -24,8 +25,8 @@ RUN dpkg --add-architecture i386 \
 
 WORKDIR /root
 
-# Install Chrome, see https://github.com/Hibbiki/chromium-win32/releases/latest
-RUN aria2c "https://github.com/Hibbiki/chromium-win32/releases/download/v88.0.4324.150-r827102/chrome.sync.7z" \
+# Install Chrome, see https://github.com/Hibbiki/chromium-win64/releases/latest
+RUN aria2c "https://github.com/Hibbiki/chromium-win64/releases/download/v88.0.4324.150-r827102/chrome.sync.7z" \
     && 7z x chrome.sync.7z \
     && rm -rf chrome.sync.7z
 
