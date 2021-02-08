@@ -9,8 +9,8 @@ RUN dpkg --add-architecture i386 \
     && apt install -y xvfb blackbox x11vnc winetricks pulseaudio software-properties-common aria2c \
     # Wine from HQ repo
     && aria2c "https://dl.winehq.org/wine-builds/winehq.key" \
-    && yes | apt-key add winehq.key \
-    && add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' \
+    && apt-key add winehq.key \
+    && yes | add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' \
     && apt install -y --install-recommends winehq-devel \
     # Update winetricks to latest git version
     && yes Y | winetricks --self-update \
