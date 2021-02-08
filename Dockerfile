@@ -6,7 +6,7 @@ ENV WINEARCH win32
 RUN dpkg --add-architecture i386 \
     && apt update \
     # Basic dependencies
-    && apt install -y xvfb blackbox x11vnc winetricks pulseaudio software-properties-common aria2c \
+    && apt install -y xvfb blackbox x11vnc winetricks pulseaudio software-properties-common aria2 \
     # Wine from HQ repo
     && aria2c "https://dl.winehq.org/wine-builds/winehq.key" \
     && apt-key add winehq.key \
