@@ -6,12 +6,13 @@ ENV WINEARCH win32
 RUN dpkg --add-architecture i386 \
     && apt update \
     # Basic dependencies
-    && apt install -y xvfb blackbox x11vnc winetricks pulseaudio software-properties-common aria2 \
+    && apt install -y xvfb blackbox x11vnc pulseaudio software-properties-common aria2 \
     # Wine from HQ repo
     && aria2c "https://dl.winehq.org/wine-builds/winehq.key" \
     && apt-key add winehq.key \
     && yes | add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' \
-    && apt install -y --install-recommends winehq-devel \
+    && apt update \
+    && apt install -y --install-recommends winehq-devel winetricks \
     # Update winetricks to latest git version
     && yes Y | winetricks --self-update \
     # Install necessary Windows stuff
