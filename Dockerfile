@@ -21,4 +21,5 @@ RUN aria2c "https://github.com/Hibbiki/chromium-win64/releases/download/v88.0.43
     && rm -rf chrome.sync.7z
 
 # Run Chrome
-ENTRYPOINT ["./run.sh"]
+ADD run.sh /root/
+ENTRYPOINT ["/root/run.sh"]
