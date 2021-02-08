@@ -2,10 +2,10 @@ FROM ubuntu:rolling
 
 # Install deps
 ENV DEBIAN_FRONTEND noninteractive
-# ENV WINEARCH win64
+# ENV WINEARCH win32
 ENV WINEARCH win64
-# dpkg --add-architecture i386 \
-RUN apt update \
+RUN dpkg --add-architecture i386 \
+    && apt update \
     # Basic dependencies
     && apt install -y xvfb blackbox x11vnc pulseaudio software-properties-common aria2 \
     # Wine from HQ repo
@@ -13,7 +13,7 @@ RUN apt update \
     && apt-key add winehq.key \
     && yes | add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' \
     && apt update \
-    && apt install -y --install-recommends winehq-devel winetricks winbind wine64 \
+    && apt install -y --install-recommends winehq-devel winetricks winbind wine64 wine32 \
     # Update winetricks to latest git version
     && yes Y | winetricks --self-update \
     # Install necessary Windows stuff
