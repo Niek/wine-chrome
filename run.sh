@@ -15,4 +15,4 @@ blackbox &
 x11vnc -nopw -noncache -forever -q -bg
 
 # Start Chrome, exit container when quitting
-wine Chrome-bin/chrome.exe --use-gl=swiftshader # add startup flags here
+wine Chrome-bin/chrome.exe --disable-gpu --start-maximized # add more startup flags here
