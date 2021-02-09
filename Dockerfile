@@ -17,7 +17,11 @@ RUN dpkg --add-architecture i386 \
     # Update winetricks to latest git version
     && yes Y | winetricks --self-update \
     # Install necessary Windows stuff
-    && winetricks -q --country=US winhttp allfonts riched20 riched30 mf \
+    && aria2c "https://github.com/doitsujin/dxvk/releases/download/v1.7.3/dxvk-1.7.3.tar.gz" \
+    && tar xvfz dxvk-*.tar.gz \
+    && cd dxvk-* \
+    && ./setup_dxvk.sh install --with-d3d10 \
+    #&& winetricks -q --country=US winhttp allfonts riched20 riched30 mf \
     # Clean up
     && apt -y autoclean \
     && apt -y autoremove \
