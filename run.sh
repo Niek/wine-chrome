@@ -14,5 +14,5 @@ while [ ! -e /tmp/.X11-unix/X0 ]; do sleep 1; done
 blackbox &
 x11vnc -nopw -noncache -forever -q -bg
 
-# Start Chrome
-#wine Chrome-bin/chrome.exe
+# Start Chrome, exit container when quitting
+wine Chrome-bin/chrome.exe # add startup flags here

@@ -1,4 +1,4 @@
-FROM ubuntu:rolling
+FROM ubuntu:20.10
 
 # Install deps
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,7 +13,7 @@ RUN dpkg --add-architecture i386 \
     && apt-key add winehq.key \
     && yes | add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main' \
     && apt update \
-    && apt install -y --install-recommends winehq-devel winetricks winbind wine64 wine32 \
+    && apt install -y --install-recommends winehq-staging winetricks winbind wine64 wine32 \
     # Update winetricks to latest git version
     && yes Y | winetricks --self-update \
     # Install necessary Windows stuff
