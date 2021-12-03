@@ -26,7 +26,7 @@ RUN dpkg --add-architecture i386 \
 WORKDIR /root
 
 # Install Chrome, see https://github.com/Hibbiki/chromium-win64/releases/latest
-RUN aria2c "https://github.com/Hibbiki/chromium-win64/releases/download/v94.0.4606.61-r911515/chrome.sync.7z" \
+RUN aria2c "https://github.com/Hibbiki/chromium-win64/releases/download/v96.0.4664.45-r929512/chrome.sync.7z" \
     && 7z x chrome.sync.7z \
     && rm -rf chrome.sync.7z
 
