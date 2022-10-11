@@ -11,7 +11,7 @@ RUN dpkg --add-architecture i386 \
     # Wine from HQ repo
     && aria2c "https://dl.winehq.org/wine-builds/winehq.key" \
     && apt-key add winehq.key \
-    && yes | add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ hirsute main' \
+    && yes | add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main' \
     && apt update \
     && apt install -y --install-recommends winehq-staging winetricks winbind wine64 wine32 \
     # Update winetricks to latest git version
